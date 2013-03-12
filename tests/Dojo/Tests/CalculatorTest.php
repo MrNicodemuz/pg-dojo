@@ -23,21 +23,21 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $actual);
     }
 	
-	public function testAddOneAndOneEqualsTwo()
+	/**
+	 * @dataProvider dataProvider
+	 */
+	public function testAddMethod($number1, $number2, $expected)
 	{
-		$this->calculator->add('1','1');
-		$this->assertEquals('2', $this->calculator->display());
+		$this->calculator->add($number1, $number2);
+		$this->assertEquals($expected, $this->calculator->display());
 	}
 	
-	public function testAddTwoAndOneEqualsThree()
+	public function dataProvider() 
 	{
-		$this->calculator->add('2','1');
-		$this->assertEquals('3', $this->calculator->display());
-	}
-	
-	public function testAddVeryBigNumberAndOneEqualsVeryBigNumberPlusOne()
-	{
-		$this->calculator->add('2222222222222222','1');
-		$this->assertEquals('2222222222222223', $this->calculator->display());
+		return array(
+			array('1', '1', '2'),
+			array('2', '1', '3'),
+			array('2222222222222222', '1', '2222222222222223')
+		);
 	}
 }
