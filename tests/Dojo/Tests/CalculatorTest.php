@@ -24,15 +24,15 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider dataProvider
+     * @dataProvider additionExpectations
      */
-    public function testAddMethod($number1, $number2, $expected)
+    public function testAddition($number1, $number2, $expected)
     {
         $this->calculator->add($number1, $number2);
         $this->assertEquals($expected, $this->calculator->display());
     }
 
-    public function dataProvider()
+    public function additionExpectations()
     {
         return array(
             array('1', '1', '2'),
